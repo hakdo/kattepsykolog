@@ -2,7 +2,8 @@
 
 ## Chat med deg selv
 Hjernestøy er slitsomt. Du bør nok snakke med en terapaut som du kan stole på. Med denne app'en er du både 
-pasient og terapaut. Gi deg selv råd som om du var en venn i nød!
+pasient og terapaut. Gi deg selv råd som om du var en venn i nød! Du kan snakke med deg selv her: 
+[fokusterapauten](https://hakdo.github.io/kattepsykolog/).
 
 ## Litt bakgrunn
 Dette miniprosjektet er en litt humoristisk vri på metodene for å stoppe hjernestøy anbefalt i denne 
