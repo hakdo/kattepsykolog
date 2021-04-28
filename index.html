@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container" style="max-width: 800px;">
+        <header class="text-center pt-3">
+            <h1>
+                fokusterapauten
+            </h1>
+            <ul class="nav justify-content-center">
+                <li class="nav-item">
+                  <a class="nav-link" aria-current="page" href="#" id="animals">Dyrisk</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="#" id="suits">Juridisk</a>
+                </li>
+        </header>
+        <main>
+            <div class="card">
+                <div class="card-body" id="chatbody">
+                    
+                </div>
+                <div class="card-footer" id="chatbox">
+                    
+                    <form id="chatform">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text bg-primary text-light" id="activeconvo">Dr. Katt</span>
+                            </div>
+                            <input type="text" id="chatput" class="form-control">
+                        </div>
+                        <a href="#" id="clearview">Avslutt terapien</a>
+                    </form>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+    <script>
+        var talkers = {
+            "deg": {
+                "navn": "Du",
+                "bilde": "assets/img/dog.jpg",
+                "alt": "Hund"
+            },
+            "terapaut": {
+                "navn": "Dr. Katt",
+                "bilde": "assets/img/cat.jpg",
+                "alt": "Katt"
+            }
+        }
+        
+        var pictureset = "animals";
+        var activetalker = "deg";
+        var setactive = function (talker) {
+            var block = document.getElementById("activeconvo");
+            block.textContent = talkers[activetalker]['navn'];
+            if (activetalker === 'deg') {
+                block.classList.remove("bg-dark")
+                block.classList.add("bg-success")
+            } else {
+                block.classList.add("bg-dark")
+                block.classList.remove("bg-success")
+            }
+        }
+        var init = function () {
+            activetalker = "terapaut"
+            setactive(activetalker);
+            var newtext = document.getElementById("chatput");
+            var newbox = document.createElement("div")
+            newbox.setAttribute("class", "d-flex border p-3")
+            var times = new Date()
+            var html = `
+            <img src="${talkers[activetalker]['bilde']}" alt="${talkers[activetalker]['alt']}"
+            class="flex-shrink-0 me-3 mt-3 rounded-circle" style="width:60px;height:60px;">
+            <div>
+                <h4>${talkers[activetalker]['navn']}&nbsp;<small>${times.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</small></h4>
+                <p>Heisann, hva er det som gnager på hjernen i dag da?</p>
+                <p class="text-muted">Denne chatten har du med deg selv, hvor du er din egen terapaut. Gi deg selv råd som du ville gitt til en venn. Du vil føle deg bedre etterpå.</p>
+                </div>`
+                newbox.innerHTML = html;
+                newtext.value = ''
+                document.getElementById("chatbody").appendChild(newbox);
+                activetalker = "deg";
+                setactive(activetalker);
+            }
+            init();
+        document.getElementById("clearview").addEventListener("click", () => {
+            document.getElementById("chatbody").innerHTML = "";
+            init();
+        })
+        document.getElementById("animals").addEventListener("click", () => {
+            talkers["deg"]["bilde"] = "assets/img/dog.jpg"
+            talkers["terapaut"]["bilde"] = "assets/img/cat.jpg"
+            talkers["deg"]["navn"] = "Deg"
+            talkers["terapaut"]["navn"] = "Dr. Katt"
+            document.getElementById("chatbody").innerHTML = "";
+            init();
+        })
+        document.getElementById("suits").addEventListener("click", () => {
+            talkers["deg"]["bilde"] = "assets/img/louis.jpg"
+            talkers["terapaut"]["bilde"] = "assets/img/lipschitz.jpg"
+            talkers["deg"]["navn"] = "Louis"
+            talkers["terapaut"]["navn"] = "Dr. Lipschitz"
+            document.getElementById("chatbody").innerHTML = "";
+            init();
+        })
+        document.getElementById("chatform").addEventListener("submit", (e) => {
+            e.preventDefault()
+            var newtext = document.getElementById("chatput");
+            var newbox = document.createElement("div")
+            newbox.setAttribute("class", "d-flex border p-3")
+            var times = new Date()
+            var html = `
+                <img src="${talkers[activetalker]['bilde']}" alt="${talkers[activetalker]['alt']}"
+                    class="flex-shrink-0 me-3 mt-3 rounded-circle" style="width:60px;height:60px;">
+                <div>
+                <h4>${talkers[activetalker]['navn']}&nbsp;<small>${times.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</small></h4>
+                    ${newtext.value}
+                </div>`
+            newbox.innerHTML = html;
+            newtext.value = ''
+            document.getElementById("chatbody").appendChild(newbox);
+            newbox.scrollIntoView();
+            if (activetalker === "deg") {
+                activetalker = "terapaut";
+            } else {
+                activetalker = "deg";
+            }
+            setactive(activetalker);
+        })
+    </script>
+</body>
+</html>
