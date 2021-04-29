@@ -9,6 +9,8 @@ pasient og terapaut. Gi deg selv råd som om du var en venn i nød! Du kan snakk
 Dette miniprosjektet er en litt humoristisk vri på metodene for å stoppe hjernestøy anbefalt i denne 
 [podcasten fra Harvard Business Review](https://open.spotify.com/episode/5JN2K5MfLHiUKXc8d7og0F?si=XJMsnIhRRdmYzbmmhRFM3Q).
 
+(I realiteten en test av "media-objekt" med Bootstrap5 etter at denne komponenten ble fjernet etter Bootstrap4, men måtte jo ha noe å lage).
+
 Ethan Cross, som er professor i psykologi ved University of Michigan har utgitt en bok kalt "Chatter: the voice in our head, why it matters and how to harness it". 
 
 Chatter, eller hjernestøy, er tendensen vi alle har, i større eller mindre grad, til å kverne på negative tanker. 
