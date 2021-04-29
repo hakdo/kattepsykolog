@@ -1,4 +1,4 @@
-# Kattepsykologen slår
+# Kattepsykologen slår til
 
 ## Chat med deg selv
 Hjernestøy er slitsomt. Du bør nok snakke med en terapaut som du kan stole på. Med denne app'en er du både 
